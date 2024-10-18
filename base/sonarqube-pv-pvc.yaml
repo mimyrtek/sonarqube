@@ -19,4 +19,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data/sonarqube"
+    path: "/mnt/data/sonar"
