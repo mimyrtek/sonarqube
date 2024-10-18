@@ -1,22 +1,23 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: postgresql-data
+  name: sonarqube-data
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
+  storageClassName: rook-ceph-block    
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: postgresql-data
+  name: sonarqube-pv
 spec:
-  capacity:
-    storage: 5Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data/sonar"
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: rook-ceph-block
