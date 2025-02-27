@@ -24,8 +24,8 @@ spec:
               value: sonarqube
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: postgresql-storage
+              name: local-storage
       volumes:
-        - name: postgresql-storage
+        - name: local-storage
           persistentVolumeClaim:
             claimName: postgresql-pvc
