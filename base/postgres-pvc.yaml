@@ -1,11 +1,22 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
   name: postgresql-pvc
 spec:
+  capacity:
+    storage: 50Gi  # Adjust as needed
   accessModes:
     - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: "local-storage"
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: "/mnt/diska/postgres"  # Use a subdirectory
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - k8snode1
+          
