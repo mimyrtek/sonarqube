@@ -9,4 +9,4 @@ spec:
       targetPort: 9000
   selector:
     app: sonarqube
-  #loadBalancerIP: <METALLB_IP>
+  loadBalancerIP: 10.10.50.160
