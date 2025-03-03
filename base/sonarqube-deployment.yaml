@@ -25,11 +25,10 @@ spec:
           ports:
             - containerPort: 9000
           volumeMounts:
-            - mountPath: /opt/sonarqube/data
-              name: local-storage
+            - name: nfs-storage              
             - mountPath: /opt/sonarqube/logs
-              name: local-storage
+              
       volumes:
-        - name: local-storage
+        - name: nfs-storage
           persistentVolumeClaim:
             claimName: sonarqube-pvc
