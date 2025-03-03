@@ -63,6 +63,7 @@ spec:
     server: "10.10.50.241"  # Replace with your Synology NAS IP
 
 ---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
