@@ -9,27 +9,28 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: nfs-storage
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sonar-logs-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: nfs-storage
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sonar-extensions-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: nfs-storage
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+  # name: sonar-logs-pvc
+# spec:
+  # accessModes:
+    # - ReadWriteMany
+  # resources:
+    # requests:
+      # storage: 5Gi
+  # storageClassName: nfs-storage
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+  # name: sonar-extensions-pvc
+# spec:
+  # accessModes:
+    # - ReadWriteMany
+  # resources:
+    # requests:
+      # storage: 5Gi
+  # storageClassName: nfs-storage
+# 
