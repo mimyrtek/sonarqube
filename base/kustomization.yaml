@@ -4,6 +4,7 @@ resources:
 #- postgres-deployment.yaml  
 #- postgres-pvc.yaml
 #- postgres-service.yaml
+- sonarqube-pv.yaml
 - sonarqube-pvc.yaml
 - sonarqube-deployment.yaml
 - sonarqube-service.yaml

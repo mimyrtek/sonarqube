@@ -14,21 +14,23 @@ spec:
     spec:
       containers:
         - name: sonarqube
-          image: sonarqube:community
-          env:
-            - name: SONAR_JDBC_URL
-              value: jdbc:postgresql://postgresql.default.svc.cluster.local:5432/sonarqube
-            - name: SONAR_JDBC_USERNAME
-              value: sonarqube
-            - name: SONAR_JDBC_PASSWORD
-              value: sonarpassword
+          image: sonarqube:lts
           ports:
             - containerPort: 9000
           volumeMounts:
-          - name: nfs-storage              
-          - mountPath: /sonarqube
-              
+            - name: sonar-data
+              mountPath: "/opt/sonarqube/data"
+            - name: sonar-logs
+              mountPath: "/opt/sonarqube/logs"
+            - name: sonar-extensions
+              mountPath: "/opt/sonarqube/extensions"
       volumes:
-      - name: nfs-storage
-        persistentVolumeClaim:
-          claimName: sonarqube-pvc
+        - name: sonar-data
+          persistentVolumeClaim:
+            claimName: sonar-data-pvc
+        - name: sonar-logs
+          persistentVolumeClaim:
+            claimName: sonar-logs-pvc
+        - name: sonar-extensions
+          persistentVolumeClaim:
+            claimName: sonar-extensions-pvc
