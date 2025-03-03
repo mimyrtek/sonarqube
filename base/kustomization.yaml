@@ -5,7 +5,7 @@ resources:
 #- postgres-pvc.yaml
 #- postgres-service.yaml
 - sonarqube-pv.yaml
-#- sonarqube-pvc.yaml
+- sonarqube-pvc.yaml
 #- sonarqube-deployment.yaml
 #- sonarqube-service.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
