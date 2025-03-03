@@ -19,11 +19,11 @@ spec:
             - containerPort: 9000
           volumeMounts:
             - name: sonar-data
-              mountPath: "/opt/sonarqube/data"
+              mountPath: "/data"
             - name: sonar-logs
-              mountPath: "/opt/sonarqube/logs"
+              mountPath: "/logs"
             - name: sonar-extensions
-              mountPath: "/opt/sonarqube/extensions"
+              mountPath: "/extensions"
       volumes:
         - name: sonar-data
           persistentVolumeClaim:
