@@ -11,37 +11,53 @@
 #   storageClassName: "local-storage"
 
 
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: sonarqube-pv
+# spec:
+#   capacity:
+#     storage: 50Gi  # Adjust as needed
+#   accessModes:
+#     - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Retain
+#   storageClassName: local-storage
+#   local:
+#     path: "/mnt/diska/sonarqube"  # Use a subdirectory
+#   nodeAffinity:
+#     required:
+#       nodeSelectorTerms:
+#       - matchExpressions:
+#         - key: kubernetes.io/hostname
+#           operator: In
+#           values:
+#           - k8snode1
+
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: sonarqube-pvc
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 50Gi
+#   storageClassName: nfs-storage
+
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: sonarqube-pv
+  name: nfs-pv
 spec:
   capacity:
-    storage: 50Gi  # Adjust as needed
+    storage: 50Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany  # Allows multiple pods/nodes to access the volume
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
-  local:
-    path: "/mnt/diska/sonarqube"  # Use a subdirectory
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - k8snode1
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sonarqube-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 50Gi
-  storageClassName: local-storage          
+  storageClassName: nfs-storage
+  nfs:
+    path: "/volume1/proxmox-k8s/sonarqube"
+    server: "10.10.50.241"  # Replace with your Synology NAS IP
