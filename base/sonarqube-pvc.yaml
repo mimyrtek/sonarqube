@@ -46,7 +46,7 @@
 #       storage: 50Gi
 #   storageClassName: nfs-storage
 
-
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -62,16 +62,15 @@ spec:
     path: "/volume1/proxmox-k8s/sonarqube"
     server: "10.10.50.241"  # Replace with your Synology NAS IP
 
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-pvc
-spec:
-  accessModes:
-    - ReadWriteMany  # Multiple pods can mount
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: nfs-storage
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: nfs-pvc
+# spec:
+#   accessModes:
+#     - ReadWriteMany  # Multiple pods can mount
+#   resources:
+#     requests:
+#       storage: 10Gi
+#   storageClassName: nfs-storage
